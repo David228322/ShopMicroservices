@@ -6,7 +6,9 @@
       "serviceActions": {
         "catalog.api": "StartDebugging",
         "busket.api": "StartDebugging",
-        "discount.api": "StartDebugging"
+        "discount.api": "StartDebugging",
+        "discount.grpc": "StartDebugging",
+        "ordering.api": "StartDebugging"
       }
     }
   }
