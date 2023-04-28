@@ -1,18 +1,25 @@
 using Basket.API.Repositories;
 using Busket.API.GrpcServices;
 using Discount.Grpc.Protos;
+using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+// General config
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.Configure<RouteOptions>(options =>
+{
+    options.LowercaseUrls = true;
+});
+builder.Services.AddAutoMapper(typeof(Program));
+
+// Redis config
 builder.Services.AddStackExchangeRedisCache(x => x.Configuration = builder.Configuration.GetValue<string>("CacheSettings:ConnectionString"));
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 
+// Grpc config
 builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(x =>
 {
     var grpcAddress = builder.Configuration.GetValue<string>("GrpcSettings:DiscountUrl");
@@ -21,10 +28,16 @@ builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
 
 builder.Services.AddScoped<DiscountGrpcService>();
 
-builder.Services.Configure<RouteOptions>(options =>
+// Rabbit config
+builder.Services.AddMassTransit(options =>
 {
-    options.LowercaseUrls = true;
+    options.UsingRabbitMq((ctx, cfg) =>
+    {
+        cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
+
+    });
 });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

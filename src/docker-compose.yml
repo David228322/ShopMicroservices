@@ -18,6 +18,9 @@ services:
 
   portainer:
     image: portainer/portainer-ce
+
+  rabbitmq:
+    image: rabbitmq:3-management
   
 
   catalog.api:
