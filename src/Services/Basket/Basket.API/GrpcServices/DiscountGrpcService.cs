@@ -1,6 +1,6 @@
 ﻿using Discount.Grpc.Protos;
 
-namespace Busket.API.GrpcServices
+namespace Basket.API.GrpcServices
 {
     public class DiscountGrpcService
     {

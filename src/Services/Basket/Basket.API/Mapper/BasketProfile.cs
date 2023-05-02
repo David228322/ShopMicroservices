@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using Busket.API.Entities;
+using Basket.API.Entities;
 using EventBus.Messages.Events;
 
-namespace Busket.API.Mapper
+namespace Basket.API.Mapper
 {
     public class BasketProfile : Profile
     {
-        public BasketProfile() 
+        public BasketProfile()
         {
             CreateMap<BasketCheckout, BasketCheckoutEvent>().ReverseMap();
         }

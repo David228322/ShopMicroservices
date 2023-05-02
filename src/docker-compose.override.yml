@@ -74,8 +74,8 @@ services:
     ports:
       - "8000:80"
 
-  busket.api:
-    container_name: busket.api
+  basket.api:
+    container_name: basket.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "CacheSettings:ConnectionString=basketdb:6379"
@@ -121,8 +121,21 @@ services:
     ports:
         - "8004:80"
 
+  ocelotapigtw:
+    container_name: ocelotapigw
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+        - catalog.api
+        - basket.api
+        - discount.api
+        - ordering.api
+    ports:
+      - "8010:80"
+
 volumes:
    mongo_data:
    portainer_data:
    posgres_data:
    pgadmin_data:
+

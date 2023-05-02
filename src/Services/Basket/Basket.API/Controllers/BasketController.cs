@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using Basket.API.Entities;
+using Basket.API.GrpcServices;
 using Basket.API.Repositories;
-using Busket.API.Entities;
-using Busket.API.GrpcServices;
 using EventBus.Messages.Events;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
@@ -81,8 +80,8 @@ namespace Basket.API.Controllers
             var basket = await _repository.GetBasket(request.UserName);
             if(basket == null)
             {
-                _logger.LogError($"Busket with {request.UserName} was not found");
-                return NotFound($"Busket with {request.UserName} was not found");
+                _logger.LogError($"Basket with {request.UserName} was not found");
+                return NotFound($"Basket with {request.UserName} was not found");
             }
 
             var eventMessage = _mapper.Map<BasketCheckoutEvent>(request);

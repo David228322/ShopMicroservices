@@ -29,11 +29,11 @@ services:
       context: .
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
 
-  busket.api:
-    image: ${DOCKER_REGISTRY-}busketapi
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
     build:
       context: .
-      dockerfile: Services/Busket/Busket.API/Dockerfile
+      dockerfile: Services/Basket/Basket.API/Dockerfile
 
   discount.api:
     image: ${DOCKER_REGISTRY-}discountapi
@@ -55,4 +55,11 @@ services:
     build:
       context: .
       dockerfile: Services/Ordering/Ordering.API/Dockerfile
+
+
+  ocelotapigtw:
+    image: ${DOCKER_REGISTRY-}ocelotapigtw
+    build:
+      context: .
+      dockerfile: ApiGateways/OcelotApiGtw/Dockerfile
 

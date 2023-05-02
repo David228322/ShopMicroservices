@@ -5,10 +5,11 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "catalog.api": "StartDebugging",
-        "busket.api": "StartDebugging",
+        "basket.api": "StartDebugging",
         "discount.api": "StartDebugging",
         "discount.grpc": "StartDebugging",
-        "ordering.api": "StartDebugging"
+        "ordering.api": "StartDebugging",
+        "ocelotapigtw": "StartDebugging"
       }
     }
   }

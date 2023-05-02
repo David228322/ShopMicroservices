@@ -1,5 +1,5 @@
 using Basket.API.Repositories;
-using Busket.API.GrpcServices;
+using Basket.API.GrpcServices;
 using Discount.Grpc.Protos;
 using MassTransit;
 
