@@ -63,3 +63,10 @@ services:
       context: .
       dockerfile: ApiGateways/OcelotApiGtw/Dockerfile
 
+
+  shopping.aggregator:
+    image: ${DOCKER_REGISTRY-}shoppingaggregator
+    build:
+      context: .
+      dockerfile: ApiGateways/Shopping.Aggregator/Dockerfile
+
