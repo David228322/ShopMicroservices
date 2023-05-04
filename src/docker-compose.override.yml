@@ -120,7 +120,7 @@ services:
     ports:
         - "8004:80"
 
-  ocelotapigtw:
+  ocelotapigw:
     container_name: ocelotapigw
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -146,10 +146,25 @@ services:
     ports:
       - "8005:80"
 
+  aspnetrunbasics:
+    container_name: aspnetrunbasics
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ApiSettings:GatewayAddress=http://ocelotapigw"
+    depends_on:
+      - ocelotapigw
+      - catalog.api
+      - basket.api
+      - discount.api
+      - ordering.api
+    ports:
+      - "8006:80"
+
 volumes:
    mongo_data:
    portainer_data:
    posgres_data:
    pgadmin_data:
+
 
 

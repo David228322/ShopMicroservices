@@ -4,7 +4,6 @@ using Ordering.Infrastructure.Persistence;
 using Ordering.API.Extensions;
 using MassTransit;
 using EventBus.Messages.Common;
-using EventBus.Messages.Events;
 using Ordering.API.EventBusConsumer;
 
 var builder = WebApplication.CreateBuilder(args);

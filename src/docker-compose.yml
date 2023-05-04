@@ -57,8 +57,8 @@ services:
       dockerfile: Services/Ordering/Ordering.API/Dockerfile
 
 
-  ocelotapigtw:
-    image: ${DOCKER_REGISTRY-}ocelotapigtw
+  ocelotapigw:
+    image: ${DOCKER_REGISTRY-}ocelotapigw
     build:
       context: .
       dockerfile: ApiGateways/OcelotApiGtw/Dockerfile
@@ -69,4 +69,11 @@ services:
     build:
       context: .
       dockerfile: ApiGateways/Shopping.Aggregator/Dockerfile
+
+
+  aspnetrunbasics:
+    image: ${DOCKER_REGISTRY-}aspnetrunbasics
+    build:
+      context: .
+      dockerfile: WebApps/AspnetRunBasics/Dockerfile
 

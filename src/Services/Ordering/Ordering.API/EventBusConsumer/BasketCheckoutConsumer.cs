@@ -2,7 +2,6 @@
 using EventBus.Messages.Events;
 using MassTransit;
 using Ordering.Application.Features.Orders.Commands.CheckoutOrder;
-using static MassTransit.ValidationResultExtensions;
 using IMediator = MediatR.IMediator;
 
 namespace Ordering.API.EventBusConsumer
